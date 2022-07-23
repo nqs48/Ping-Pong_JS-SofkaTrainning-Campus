@@ -26,14 +26,15 @@
     this.board= board;
     this.board.bars.push(this);
     this.kind= "rectangle";
+    this.speed= 10;
   }
 
   self.Bar.prototype= {
     down: function(){
-
+      this.y+=speed;
     },
     up: function(){
-
+      this.x+=speed;
     }
   }
 })();
