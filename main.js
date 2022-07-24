@@ -10,7 +10,7 @@
   
   self.Board.prototype= {
     get elements(){
-      let elements= this.bars;
+      var elements= this.bars;
       elements.push(this.ball);
       return elements;
     }
@@ -20,21 +20,21 @@
 (function(){
   self.Bar= function (x,y,width,height,board){
     this.x= x;
-    this.y=y;
-    this.width=width;
-    this.height=height;
+    this.y= y;
+    this.width= width;
+    this.height= height;
     this.board= board;
     this.board.bars.push(this);
     this.kind= "rectangle";
-    this.speed= 10;
+    this.speed= 5;
   }
 
   self.Bar.prototype= {
     down: function(){
-      this.y+=speed;
+      this.y+=this.speed;
     },
     up: function(){
-      this.x+=speed;
+      this.y+=this.speed;
     }
   }
 })();
@@ -68,17 +68,35 @@
   }
 })();
 
-window.addEventListener('load',main)
+
+document.addEventListener("keydown",(event) => {
+    var keyValue = event.keyCode;
+    console.log("keyValue: " + keyValue);
+    if (event.keyCode == 38) {
+      bar.up();
+    } else if (event.keyCode == 40) {
+      bar.down();
+    }
+  });
+
+self.addEventListener("load", main);
+
+
+
+let board = new Board(800, 400);
+let bar = new Bar(20, 100, 40, 100, board);
+// let bar2 = new Bar(700, 100, 40, 100, board);
+let canvas = document.getElementById("canvas");
+let board_view = new BoardView(canvas, board);
 
 
 function main(){
-
-  const board= new Board(800,400);
-  const bar= new Bar(20,100,30,100,board);
-  const bar2 = new Bar(750, 100, 30, 100, board);
-  const canvas= document.getElementById('canvas');
-  const board_view= new BoardView(canvas,board);
+  console.log("Hello Dev");
+  
   board_view.draw();
+  
+  console.log(board)
+  
   
 
 
