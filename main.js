@@ -26,7 +26,7 @@
     this.board= board;
     this.board.bars.push(this);
     this.kind= "rectangle";
-    this.speed= 10;
+    this.speed= 20;
   }
 
   self.Bar.prototype= {
@@ -52,6 +52,9 @@
   }
 
   self.BoardView.prototype = {
+    clean: function(){
+      this.ctx.clearRect(0,0,this.board.width,this.board.height);
+    },
     draw: function(){
       for (var i= this.board.elements.length -1;i>=0; i--){
         var el= this.board.elements[i];
@@ -107,7 +110,7 @@ let board_view = new BoardView(canvas, board);
 window.requestAnimationFrame(controller);
 
 function controller(){
-
+  board_view.clean();
   board_view.draw();
   window.requestAnimationFrame(controller);
   
