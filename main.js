@@ -85,9 +85,11 @@
       }
     },
     play: function(){
-      this.clean();
-      this.draw();
-      this.board.ball.move();
+      if(this.board.playing){
+        this.clean();
+        this.draw();
+        this.board.ball.move();
+      }
     }
   }
 
@@ -113,21 +115,28 @@
 
 
 document.addEventListener("keydown",(event) => {
-  event.preventDefault();
+  
     switch (event.keyCode){
-      case 38: 
+      case 38:
+        event.preventDefault(); 
         bar.up();
         break
-      case 40: 
+      case 40:
+        event.preventDefault(); 
         bar.down();
         break;
-      case 87: 
+      case 87:
+        event.preventDefault(); 
         bar2.up();
         break;
       case 83:
+        event.preventDefault();
         bar2.down();
         break;
-      
+      case 32:
+        event.preventDefault();
+        board.playing = !board.playing;
+
     }
     console.log(bar2.toString());
   });
@@ -143,6 +152,8 @@ let ball= new Ball(350, 100, 10,board);
 let canvas = document.getElementById("canvas");
 let board_view = new BoardView(canvas, board);
 
+
+board_view.draw();
 window.requestAnimationFrame(controller);
 
 
