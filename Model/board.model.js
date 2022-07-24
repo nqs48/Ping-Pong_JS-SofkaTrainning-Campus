@@ -1,4 +1,4 @@
-export class Board {
+export class BoardModel {
 
   constructor(width, height){
     this.width = width;
