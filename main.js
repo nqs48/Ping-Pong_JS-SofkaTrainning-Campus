@@ -60,6 +60,10 @@
         var el= this.board.elements[i];
         draw(this.ctx,el);
       }
+    },
+    play: function(){
+      this.clean();
+      this.draw();
     }
   }
 
@@ -110,8 +114,8 @@ let board_view = new BoardView(canvas, board);
 window.requestAnimationFrame(controller);
 
 function controller(){
-  board_view.clean();
-  board_view.draw();
+  board_view.play();
+  
   window.requestAnimationFrame(controller);
   
   
