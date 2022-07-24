@@ -23,12 +23,21 @@
     this.y= y;
     this.radius= radius;
     this.speed_y= 0;
-    this.speed_x=3;
-    this.board=board;	
+    this.speed_x=2;
+    this.board=board;
+    this.direction= 1;	
 
     board.ball= this;
     this.kind= "circle";
   }
+
+  self.Ball.prototype= {
+    move: function(){
+      this.x += (this.speed_x * this.direction);
+      this.y += (this.speed_y); 
+    }
+  }
+
 })();
 
 (function(){
@@ -78,6 +87,7 @@
     play: function(){
       this.clean();
       this.draw();
+      this.board.ball.move();
     }
   }
 
@@ -117,6 +127,7 @@ document.addEventListener("keydown",(event) => {
       case 83:
         bar2.down();
         break;
+      
     }
     console.log(bar2.toString());
   });
@@ -126,13 +137,14 @@ document.addEventListener("keydown",(event) => {
 
 
 let board = new Board(800, 400);
-let bar = new Bar(20, 100, 40, 100, board);
-let bar2 = new Bar(700, 100, 40, 100, board);
+let bar2 = new Bar(20, 100, 40, 100, board);
+let bar = new Bar(700, 100, 40, 100, board);
 let ball= new Ball(350, 100, 10,board);
 let canvas = document.getElementById("canvas");
 let board_view = new BoardView(canvas, board);
 
 window.requestAnimationFrame(controller);
+
 
 function controller(){
   board_view.play();
