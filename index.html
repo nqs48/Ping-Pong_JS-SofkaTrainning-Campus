@@ -3,14 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Volley-Pong | ADev</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <h1>Ping Pong A-Dev</h1>
-    <canvas id="canvas"></canvas>
-    <script type="module" src="./main.js" async defer></script>
+    <header>
+      <h1 class="title_game">
+        Game Volley-Pong 
+      </h1>
+    </header>
+    <main>
+      <section class="main_section">
+        <canvas id="canvas"></canvas> 
+        <hr/>
+        <div class="instruction_container">
+          <h1>
+              Instructions:
+          </h1>
+          <p><b>Start Game:</b>Click Space key</p>
+          <p><strong>To move Left bar: </strong>  'W' -> Up and 'S' -> Down</p>
+          <p><strong>To move Right bar: </strong>  'Arrow-up' -> Up and 'Arrow-Down' -> Down</p>
+
+          <h2>Don't let the ball off the board </h2>
+        </div>
+
+      </section>
+      
+    
+    </main>
+    
+    <script type="module" src="./index.js" async defer></script>
   </body>
 </html>

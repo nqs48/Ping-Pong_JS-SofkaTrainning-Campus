@@ -1,3 +1,53 @@
+html, body{
+  background-image: radial-gradient(circle at 37.72% -19.64%, #daffb7 0, #dfffa7 7.14%, #e4f996 14.29%, #e8ef85 21.43%, #ebe373 28.57%, #eed561 35.71%, #f0c64e 42.86%, #f2b53c 50%, #f4a32c 57.14%, #f69221 64.29%, #f8801d 71.43%, #fb6d20 78.57%, #fe5a27 85.71%, #ff4431 92.86%, #ff293d 100%);
+  pading: 0;
+  marging: 0;
+}
+
+header{
+  width: 50%;
+  text-align: center;
+}
+
+body {
+  background-color: #272343;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.main_section{
+  width: 80vw%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title_game{
+  background-color: #daffb7;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  font-weight: bolder;
+  font-size: 2.8rem;
+  color: black;
+}
+
+.instruction_container{
+  width: 60%;
+  padding: 0 2rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+}
+
 #canvas {
-  border: 3px solid;
+  border: 2px solid;
+  margin-bottom: 2rem;
+  width: 80%;
 }

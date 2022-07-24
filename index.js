@@ -5,8 +5,8 @@ import {BoardView} from "./View/board.view.js"
 
 
 const board = new BoardModel(800, 400);
-const bar2 = new BarModel(20, 100, 40, 100, board);
-const bar = new BarModel(700, 100, 40, 100, board);
+const bar2 = new BarModel(10, 100, 40, 100, board);
+const bar = new BarModel(750, 100, 40, 100, board);
 const ball = new BallModel(350, 100, 10, board);
 const canvas = document.getElementById("canvas");
 const board_view = new BoardView(canvas, board);
@@ -48,7 +48,5 @@ function controller(){
   
   window.requestAnimationFrame(controller);
   
-  
-
 
 }
