@@ -11,9 +11,23 @@
   self.Board.prototype= {
     get elements(){
       var elements= this.bars;
-      // elements.push(this.ball);
+      elements.push(this.ball);
       return elements;
     }
+  }
+})();
+
+(function(){
+  self.Ball= function(x,y,radius,board){
+    this.x=x;
+    this.y= y;
+    this.radius= radius;
+    this.speed_y= 0;
+    this.speed_x=3;
+    this.board=board;	
+
+    board.ball= this;
+    this.kind= "circle";
   }
 })();
 
@@ -73,6 +87,12 @@
       case "rectangle":
         ctx.fillRect(element.x, element.y, element.width, element.height);
         break;
+      case "circle":
+        ctx.beginPath();
+        ctx.arc(element.x,element.y,element.radius,0,7);
+        ctx.fill();
+        ctx.closePath();
+        break;
     }
   // }
   }
@@ -108,6 +128,7 @@ document.addEventListener("keydown",(event) => {
 let board = new Board(800, 400);
 let bar = new Bar(20, 100, 40, 100, board);
 let bar2 = new Bar(700, 100, 40, 100, board);
+let ball= new Ball(350, 100, 10,board);
 let canvas = document.getElementById("canvas");
 let board_view = new BoardView(canvas, board);
 
