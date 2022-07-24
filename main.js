@@ -1,5 +1,6 @@
 import {BoardModel} from "./Model/board.model.js"
-import {BallModel} from './Model/ball.model.js'
+import {BallModel} from "./Model/ball.model.js"
+import {BarModel} from "./Model/bar.model.js"
 
 // (function(){
 //   self.Board = function(width, height){
@@ -67,30 +68,30 @@ import {BallModel} from './Model/ball.model.js'
 
 // })();
 
-(function(){
-  self.Bar= function (x,y,width,height,board){
-    this.x= x;
-    this.y= y;
-    this.width= width;
-    this.height= height;
-    this.board= board;
-    this.board.bars.push(this);
-    this.kind= "rectangle";
-    this.speed= 20;
-  }
+// (function(){
+//   self.Bar= function (x,y,width,height,board){
+//     this.x= x;
+//     this.y= y;
+//     this.width= width;
+//     this.height= height;
+//     this.board= board;
+//     this.board.bars.push(this);
+//     this.kind= "rectangle";
+//     this.speed= 20;
+//   }
 
-  self.Bar.prototype= {
-    down: function(){
-      this.y+=this.speed;
-    },
-    up: function(){
-      this.y-=this.speed;
-    },
-    toString: function(){
-      return "x: "+this.x + " y: "+ this.y;
-    }
-  }
-})();
+//   self.Bar.prototype= {
+//     down: function(){
+//       this.y+=this.speed;
+//     },
+//     up: function(){
+//       this.y-=this.speed;
+//     },
+//     toString: function(){
+//       return "x: "+this.x + " y: "+ this.y;
+//     }
+//   }
+// })();
 
 (function(){
   self.BoardView = function(canvas,board){
@@ -200,8 +201,8 @@ document.addEventListener("keydown",(event) => {
 
 
 let board = new BoardModel(800, 400);
-let bar2 = new Bar(20, 100, 40, 100, board);
-let bar = new Bar(700, 100, 40, 100, board);
+let bar2 = new BarModel(20, 100, 40, 100, board);
+let bar = new BarModel(700, 100, 40, 100, board);
 let ball= new BallModel(350, 100, 10,board);
 let canvas = document.getElementById("canvas");
 let board_view = new BoardView(canvas, board);
