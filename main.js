@@ -23,11 +23,12 @@
     this.y= y;
     this.radius= radius;
     this.speed_y= 0;
-    this.speed_x=2;
+    this.speed_x=1;
     this.board=board;
     this.direction= 1;
     this.bounce_angle= 0;
     this.max_bounce_angle	= Math.PI/12;
+    this.speed= 1;
 
     board.ball= this;
     this.kind= "circle";
@@ -37,6 +38,12 @@
     move: function(){
       this.x += (this.speed_x * this.direction);
       this.y += (this.speed_y); 
+    },
+    get width(){
+      return this.radius * 2;
+    },
+    get height(){
+      return this.radius * 2;
     },
     collision: function(bar){
       //react to the collision with a bar
@@ -113,6 +120,7 @@
       if(this.board.playing){
         this.clean();
         this.draw();
+        this.check_collisions();
         this.board.ball.move();
       }
     }
