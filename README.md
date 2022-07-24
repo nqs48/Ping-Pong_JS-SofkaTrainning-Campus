@@ -19,7 +19,7 @@ Criteria:
 - Also don't forget to deploy the solution using Github Pages.
 - Recommendation: make use of comments within the code to understand what is being said.
 
-### [](   )
+### [https://ping-pong-adev.netlify.app/](https://ping-pong-adev.netlify.app/)
 
 
 ---
@@ -41,7 +41,7 @@ Responsive design of single page aplication.
 
 ### Event new window
 
-Event in each button to react to the **click** and rmove the components.
+Event in each button to react to the **click** and move the components.
 
 ![image](https://res.cloudinary.com/adev48/image/upload/v1658638463/Deployments/Ping-Pong_Game/detail_o8irqf.png)
 
@@ -108,6 +108,6 @@ Jr. Software Developer
 - LinkedIn => [Nestor Quiroga Suárez](https://www.linkedin.com/in/nqs48/)
 
 
-Project Link: []()
+Project Link: [https://ping-pong-adev.netlify.app/](https://ping-pong-adev.netlify.app/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
