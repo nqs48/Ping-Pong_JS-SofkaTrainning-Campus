@@ -1,21 +1,23 @@
-(function(){
-  self.Board = function(width, height){
-    this.width= width;
-    this.height= height;
-    this.playing=false;
-    this.game_over= false;
-    this.bars= [];
-    this.ball= null;
-  } 
+import {Board} from "./Model/Board.js"
+
+// (function(){
+//   self.Board = function(width, height){
+//     this.width= width;
+//     this.height= height;
+//     this.playing=false;
+//     this.game_over= false;
+//     this.bars= [];
+//     this.ball= null;
+//   } 
   
-  self.Board.prototype= {
-    get elements(){
-      let elements= this.bars.map(bar => bar);
-      elements.push(this.ball);
-      return elements;
-    }
-  }
-})();
+//   self.Board.prototype= {
+//     get elements(){
+//       let elements= this.bars.map(bar => bar);
+//       elements.push(this.ball);
+//       return elements;
+//     }
+//   }
+// })();
 
 (function(){
   self.Ball= function(x,y,radius,board){
