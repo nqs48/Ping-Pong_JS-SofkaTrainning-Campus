@@ -26,7 +26,7 @@
     this.board= board;
     this.board.bars.push(this);
     this.kind= "rectangle";
-    this.speed= 5;
+    this.speed= 10;
   }
 
   self.Bar.prototype= {
@@ -34,7 +34,10 @@
       this.y+=this.speed;
     },
     up: function(){
-      this.y+=this.speed;
+      this.y-=this.speed;
+    },
+    toString: function(){
+      return "x: "+this.x + " y: "+ this.y;
     }
   }
 })();
@@ -70,13 +73,13 @@
 
 
 document.addEventListener("keydown",(event) => {
-    var keyValue = event.keyCode;
-    console.log("keyValue: " + keyValue);
     if (event.keyCode == 38) {
       bar.up();
     } else if (event.keyCode == 40) {
       bar.down();
+      
     }
+    console.log(bar.toString());
   });
 
 self.addEventListener("load", main);
