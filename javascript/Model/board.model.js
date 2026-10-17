@@ -7,6 +7,7 @@ export class BoardModel {
     this.game_over = false;
     this.bars = [];
     this.ball = null;
+    this.score = { left: 0, right: 0 };
   }
 
   get elements(){

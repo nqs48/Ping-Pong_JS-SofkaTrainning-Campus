@@ -3,37 +3,105 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Volley-Pong | ADev</title>
+    <title>Air Ping-Pong | ADev</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
   </head>
   <body>
+    <div class="sun"></div>
+    <div class="grid"></div>
+
     <header>
-      <h1 class="title_game">
-        Game Volley-Pong 
-      </h1>
+      <h1 class="title_game"><span class="title_air">Air</span> <span class="title_name">Ping-Pong</span></h1>
+      <p class="subtitle">&copy; 1984 ADev Arcade</p>
     </header>
+
     <main>
       <section class="main_section">
-        <canvas id="canvas"></canvas> 
-        <hr/>
-        <div class="instruction_container">
-          <h1>
-              Instructions:
-          </h1>
-          <p><b>Start Game:</b>Click Space key</p>
-          <p><strong>To move Left bar: </strong>  'W' -> Up and 'S' -> Down</p>
-          <p><strong>To move Right bar: </strong>  'Arrow-up' -> Up and 'Arrow-Down' -> Down</p>
+        <div class="arena">
+          <aside class="panel player p1">
+            <span class="player_tag">1UP</span>
+            <h3>Player 1</h3>
+            <div class="control_deck">
+              <div class="controls_list">
+                <p class="control"><kbd data-key="87">W</kbd><span>Up</span></p>
+                <p class="control"><kbd data-key="83">S</kbd><span>Down</span></p>
+              </div>
+              <div class="track" aria-hidden="true"><span class="mini_paddle"></span></div>
+            </div>
+          </aside>
 
-          <h2>Don't let the ball off the board </h2>
+          <div class="screen">
+            <canvas id="canvas"></canvas>
+          </div>
+
+          <aside class="panel player p2">
+            <span class="player_tag">2UP</span>
+            <h3>Player 2</h3>
+            <div class="control_deck">
+              <div class="controls_list">
+                <p class="control"><kbd data-key="38">&uarr;</kbd><span>Up</span></p>
+                <p class="control"><kbd data-key="40">&darr;</kbd><span>Down</span></p>
+              </div>
+              <div class="track" aria-hidden="true"><span class="mini_paddle"></span></div>
+            </div>
+          </aside>
         </div>
 
+        <div class="start_container">
+          <p class="start"><kbd class="wide" data-key="32">Space</kbd> Start / Pause</p>
+          <p class="warning">Don't let the ball off the board!</p>
+        </div>
+
+        <div class="panel settings_container" id="settings">
+          <div class="settings_header">
+            <h2>Settings</h2>
+            <button type="button" class="reset_button" id="settings_reset">Reset</button>
+          </div>
+
+          <div class="settings_row">
+            <div class="setting">
+              <div class="setting_head">
+                <label for="speed">Ball speed</label>
+                <output id="speed_value" for="speed"></output>
+              </div>
+              <div class="setting_control">
+                <span class="range_hint">Slow</span>
+                <input type="range" id="speed" min="1" max="10" step="1">
+                <span class="range_hint">Fast</span>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting_head">
+                <span class="setting_label">Ball size</span>
+              </div>
+              <div class="setting_control">
+                <div class="segmented">
+                  <button type="button" data-size="6">S</button>
+                  <button type="button" data-size="10">M</button>
+                  <button type="button" data-size="14">L</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting">
+              <div class="setting_head">
+                <span class="setting_label">Ball style</span>
+              </div>
+              <div class="setting_control">
+                <div class="skins" id="skins"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      
-    
     </main>
-    
+
     <script type="module" src="./javascript/Controller/view.controller.js" async defer></script>
   </body>
 </html>

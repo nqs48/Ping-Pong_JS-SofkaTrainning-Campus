@@ -11,11 +11,11 @@ export class BarModel {
   }
 
   down(){
-    this.y += this.speed;
+    this.y = Math.min(this.y + this.speed, this.board.height - this.height);
   }
 
   up(){
-    this.y -= this.speed;
+    this.y = Math.max(this.y - this.speed, 0);
   }
 
   toString(){
