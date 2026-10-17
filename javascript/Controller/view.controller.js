@@ -2,6 +2,9 @@ import { BoardModel } from "../Model/board.model.js"
 import { BallModel } from "../Model/ball.model.js";
 import { BarModel } from "../Model/bar.model.js";
 import { BoardView } from "../View/board.view.js";
+import { SettingsModel, DEFAULT_SETTINGS } from "../Model/settings.model.js";
+import { SettingsView } from "../View/settings.view.js";
+import { SKINS } from "../View/ball.skins.js";
 
 
 class ViewController {
@@ -25,6 +28,19 @@ class ViewController {
 
 
 const ct = new ViewController();
+
+const settings = new SettingsModel();
+if (!SKINS[settings.skin]) settings.skin = DEFAULT_SETTINGS.skin;
+
+function apply_settings(settings) {
+  ct.ball.setSpeed(settings.speed);
+  ct.ball.radius = settings.size;
+  ct.board_view.skin = SKINS[settings.skin];
+  settings.save();
+}
+
+apply_settings(settings);
+const settings_view = new SettingsView(document.getElementById("settings"), settings, apply_settings);
 
 export function hit(a, b) {
   let hit = false;
@@ -80,11 +96,34 @@ document.addEventListener("keydown", (event) => {
 });
 
 
+//light up the on-screen key hints while a key is held
+function highlight_key(keyCode, pressed) {
+  for (let el of document.querySelectorAll(`[data-key="${keyCode}"]`)) {
+    el.classList.toggle("pressed", pressed);
+  }
+}
+
+document.addEventListener("keydown", (event) => highlight_key(event.keyCode, true));
+document.addEventListener("keyup", (event) => highlight_key(event.keyCode, false));
+
+const tracks = [
+  [ct.barLeft, document.querySelector(".p1 .track")],
+  [ct.barRight, document.querySelector(".p2 .track")],
+];
+
+function update_tracks() {
+  for (let [bar, track] of tracks) {
+    track.style.setProperty("--pos", bar.y / (ct.board.height - bar.height));
+  }
+}
+
 ct.board_view.draw();
 window.requestAnimationFrame(controller);
 
 function controller() {
   ct.board_view.play();
+  settings_view.draw_previews(performance.now());
+  update_tracks();
 
   window.requestAnimationFrame(controller);
 }
