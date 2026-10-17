@@ -20,6 +20,35 @@ export class BallModel{
   move(){
     this.x += (this.speed_x * this.direction);
     this.y += (this.speed_y); 
+    this.wallCollision();
+  }
+
+  setSpeed(speed){
+    //keep the current direction and angle, just scale the velocity
+    let ratio = speed / this.speed;
+    this.speed_x *= ratio;
+    this.speed_y *= ratio;
+    this.speed = speed;
+  }
+
+  reset(direction){
+    //place the ball in the center of the board after a point
+    this.x = this.board.width / 2;
+    this.y = this.board.height / 2;
+    this.speed_y = 0;
+    this.speed_x = this.speed;
+    this.direction = direction;
+  }
+
+  wallCollision(){
+    //bounce off the top and bottom edges of the board
+    if (this.y - this.radius <= 0) {
+      this.y = this.radius;
+      this.speed_y = Math.abs(this.speed_y);
+    } else if (this.y + this.radius >= this.board.height) {
+      this.y = this.board.height - this.radius;
+      this.speed_y = -Math.abs(this.speed_y);
+    }
   }
 
   collision(bar){
